@@ -1,0 +1,871 @@
+/* RESET */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* KEYFRAMES */
+@keyframes fade-down {
+0% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.9);
+}
+100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+}
+
+@keyframes fade-up {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    }
+
+@keyframes dissolvenza {
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
+    
+}
+
+@keyframes dissolvenzatit {
+    0% {
+        opacity: 0%;
+    }
+    25% {
+        opacity: 100%;
+    }
+
+    75% {
+        opacity: 100%;
+    }
+
+    100% {
+        opacity: 0%;
+    }
+    
+}
+
+/* BASE STYLES */
+html { /* per usarli in javascript */
+    --default-opacity: 0.1;
+    --hover-opacity: 0.5;
+    
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Mulish';
+    position: relative;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* HEADER */
+.header{
+    display: flex; /*per sbloccare la funzione flex che serve a fare layout flessibili*/
+    align-items: center; 
+    justify-content: space-between; /* giustificando x tutto lo spazio orizzontale, l'icona sarà a sx e il bottone a dx*/
+    padding: 50px 60px;
+    position: fixed; /* per far scorrere l'header in tutta la pag */
+    width: 100%; /*per qualche strana ragione con il fixed sopra si distribuiva solo in un box ristretto */
+    z-index: 2000;
+}
+
+.logo {
+    width: 35px;
+    border-radius: 50%;
+    object-fit: cover; /* per evitare che l'immagine sia distorta */
+    animation: fade-down 0.5s 0.4s backwards; /* serve per aspettare il delay di 0.4s prima di fare animazione */
+}
+
+.my-self-button {
+    background-color: white;
+    color: #000000;
+    padding: 10px 20px;
+    border-radius: 50px;
+    z-index: 2000;
+    font-size: 12px;
+    font-weight: 500;
+    margin-left: 75px;
+}
+
+button {
+ position: relative;
+ display: inline-block;
+ cursor: pointer;
+ outline: none;
+ border: 0;
+ vertical-align: middle;
+ text-decoration: none;
+ background: transparent;
+ padding: 0;
+ font-size: inherit;
+ font-family: inherit;
+ animation: fade-down 0.5s 0.4s backwards;
+}
+
+button.back {
+ width: 6rem;
+ height: auto;
+}
+
+button.back .circle {
+ transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+ position: relative;
+ display: block;
+ margin: 0;
+ width: 2rem;
+ height: 2rem;
+ background: #fff;
+ border-radius: 1.625rem;
+}
+
+button.back .circle .icon {
+ transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+ position: absolute;
+ top: 1px;
+ bottom: 0;
+ margin: auto;
+ background: #fff;
+ transform: rotateZ(180deg) translateX(-1px);
+ scale: 0.8;
+}
+
+button.back .circle .icon.arrow {
+ transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+ left: 0.625rem;
+ width: 1.125rem;
+ height: 0.125rem;
+ background: none;
+}
+
+button.back .circle .icon.arrow::before {
+ position: absolute;
+ content: "";
+ top: -0.29rem;
+ right: 0.0625rem;
+ width: 0.625rem;
+ height: 0.625rem;
+ border-top: 0.125rem solid #000;
+ border-right: 0.125rem solid #000;
+ transform: rotate(45deg);
+}
+
+button.back .button-textback {
+ transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ padding: 0.35rem 0;
+ margin: 0 0 0 1.85rem;
+ color: #000;
+ font-weight: 700;
+ font-size: small;
+ line-height: 1.6;
+ text-align: center;
+ text-transform: uppercase;
+ opacity: 0;
+}
+
+button:hover .circle {
+ width: 100%;
+}
+
+button:hover .circle .icon.arrow {
+ background: #000;
+ transform: translate(1rem, 0);
+ transform: rotateZ(180deg) translateX(-1px);
+}
+
+button:hover .button-textback {
+ opacity: 1;
+ transition: all 0.45s;
+}
+
+/* BUTTON */
+.button {
+
+background-color: white;
+font-size: 12px;
+font-weight: bold;
+text-transform: uppercase; /* tutto maiuscolo */
+color: black;
+padding: 10px 20px; /*spazio tra testo e margine del bottone, il primo valore è per sopra-sotto e il secondo dx-sx*/
+border-radius: 5000px; /*valore esagerato per farlo tondo al max*/
+transition: all 0.3s;
+}
+
+.button:hover /*proprietà specifica*/{
+    transform: scale(1.15);
+
+}
+
+.button--contact {
+    animation: fade-down 0.5s 0.4s backwards; /* serve per aspettare il delay di 0.4s prima di fare animazione */
+
+}
+
+/* VIDEO */
+
+.containerz{
+    width: 100%;
+}
+
+.containerz video {
+    position:relative;
+    z-index:-3;
+    width: 100%;
+}
+.overlay {
+    z-index:-1;
+    font-size: 4vw;
+    position: absolute; 
+    top: 18vw;
+    left: 0;
+    text-align: center; 
+    width: 100%; 
+    font-family: 'Unbounded';
+}
+
+  
+/* BIO */
+
+
+.bio {
+    text-align: center;
+    padding-top: 100px;
+    opacity: 0.8;
+    font-size: 16px;
+    margin-left: 15%;
+    margin-right: 15%;
+    font-weight: 300;
+    line-height: 24px;
+}
+
+.bold {
+    color: rgb(255, 155, 85);
+    opacity: 1;
+    font-weight: large;
+}
+
+/*WORK*/
+.work {
+    margin-top: 100px;
+    margin-left: 15%;
+    margin-right: 15%;
+    align-items: center;
+
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 35px;
+}
+
+.heading2 {
+    display: flex;
+}
+
+/* SOCIAL */
+
+.social {
+    z-index: 4000;
+}
+
+
+.behance {
+    width: 18px;
+    margin-right: 10px;
+    margin-bottom: 4px;
+    fill: white;
+    transition: all 0.3s;
+    margin-top: 10px;
+}
+
+.behance:hover {
+    fill: rgb(255, 155, 85);
+}
+
+.instagram {
+    width: 18px;
+    margin-left: 10px;
+    margin-right: 10px;
+    fill: white;
+    transition: all 0.3s;
+}
+
+.instagram:hover {
+    fill: rgb(255, 155, 85);
+}
+
+
+
+.whatsapp {
+    width: 18px;
+    margin-left: 10px;
+    fill: white;
+    transition: all 0.3s;
+}
+
+.whatsapp:hover {
+    fill: rgb(255, 155, 85);
+}
+
+/* GRID */
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 0.4fr 0.4fr 0.5fr;
+    gap: 25px;
+    position: relative;
+}
+
+.project {
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.project:hover {
+    cursor: pointer;
+}
+
+.project:nth-child(1) {
+    grid-row: 1 / 3;
+}
+
+.project:nth-child(2) {
+    grid-column: 2/4;
+    
+}
+
+.project:nth-child(3) {
+    
+}
+
+.project:nth-child(4) {
+    
+}
+
+.project:nth-child(5) {
+    
+}
+
+.project:nth-child(6) {
+
+}
+
+.project:nth-child(7) {
+    
+}
+
+.project::before { /*per creare overlay nero su tutti i works */
+    content: '';
+    height: 100%;
+    width: 100%;
+    background-color: #000000;
+    position: absolute;
+    opacity: var(--default-opacity);
+    transition: all 0.4s;
+    z-index: 10;
+}
+
+.project:hover::before {
+    opacity: var(--hover-opacity);
+}
+
+.grid-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: all 0.4s;
+    transform: scale(1.08);
+}
+
+.project:hover .grid-img {
+    filter: blur(2px);
+    transform: scale(1.01);
+}
+
+/* PROJECT INFO */
+
+ul {
+    list-style-type: none;
+}
+
+.project-info {
+    position: absolute;
+    opacity: 0;
+    z-index: 100;
+    bottom: 5px;
+    text-align: left;
+    padding: 24px;
+    transform: translateY(10px);
+    transition: all 0.4s;
+}
+
+.project:hover .project-info {
+    opacity: 1;
+    transform: translate(0);
+}
+
+.third-heading {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.third-heading:hover {
+    text-decoration: underline;
+}
+
+.description {
+    font-size: 14px;
+    margin: 3px 0 12px;
+    opacity: 0.8;
+    font-weight: 300;
+}
+
+.technologies {
+    font-size: 10px;
+    text-transform: uppercase;
+    display: flex;
+    column-gap: 14px;
+    opacity: 0.8;
+    letter-spacing: 1px;
+    text-align: left;
+}
+
+/* SPOTIFY */
+
+.spotify {
+    display: flex;
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+}
+
+.playlist {
+
+}
+
+.spoty-text {
+    font-weight: 700;
+}
+
+.loading {
+    --speed-of-animation: 0.9s;
+    --gap: 6px;
+    --first-color: rgb(255, 155, 85);
+    --second-color: rgb(255, 155, 85);
+    --third-color: rgb(255, 155, 85);
+    --fourth-color: rgb(255, 155, 85);
+    --fifth-color: rgb(255, 155, 85);
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    gap: 6px;
+    padding-top: 100px;
+   }
+   
+   .loading span {
+    width: 4px;
+    height: 50px;
+    background: var(--first-color);
+    animation: scale var(--speed-of-animation) ease-in-out infinite;
+   }
+   
+   .loading span:nth-child(2) {
+    background: var(--second-color);
+    animation-delay: -0.8s;
+   }
+   
+   .loading span:nth-child(3) {
+    background: var(--third-color);
+    animation-delay: -0.7s;
+   }
+   
+   .loading span:nth-child(4) {
+    background: var(--fourth-color);
+    animation-delay: -0.6s;
+   }
+   
+   .loading span:nth-child(5) {
+    background: var(--fifth-color);
+    animation-delay: -0.5s;
+   }
+   
+   @keyframes scale {
+    0%, 40%, 100% {
+     transform: scaleY(0.05);
+    }
+   
+    20% {
+     transform: scaleY(1);
+    }
+   }
+
+.spoty-bold {
+    color: rgb(255, 155, 85);
+    font-weight: 900;
+}
+
+/* SECONDARY PAGES */
+
+.principale {
+    margin-left: 15%;
+    margin-right: 15%;
+    display: block;
+    
+}
+
+/* HOLLOW KNIGHT PAGE */
+
+.HN {
+    padding-top: 250px;
+    padding-right: 200px;
+    padding-left: 200px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.HN_video {
+    border-radius: 12px;
+    height: 700px;
+}
+
+.HN_text {
+    padding-left: 50px;
+}
+
+.HN_paragraph {
+    padding-top: 50px;
+}
+
+.grid-dettagli {
+    display: grid;
+    grid-template-columns: 150px 150px;
+    grid-template-rows: 150px 150px;
+    gap: 25px;
+    position: relative;
+    padding-top: 50px;
+}
+
+.dettaglio {
+    z-index: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    transform: scale(1);
+    transition: all 0.5s;
+}
+
+.ingrandito {
+    z-index: 4;
+    transform: scale(3);
+}
+
+
+.dettaglio:nth-child(1) {
+    grid-row: 1 / 2;
+    grid-column: 1/2;
+
+}
+
+.project:nth-child(2) {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+.dettaglio:nth-child(3) {
+
+    grid-row: 2 / 3;
+    grid-column: 1/2;  
+
+}
+
+.dettaglio:nth-child(4) {
+    grid-column: 2/3;
+    grid-row: 2 / 3;
+}
+
+
+
+.grid-det-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.dettaglio:nth-child(1):hover {
+    z-index: 3;
+    cursor: pointer;
+}
+
+.dettaglio:nth-child(2):hover {
+    z-index: 3;
+    cursor: pointer;
+
+}
+
+.dettaglio:nth-child(3):hover {
+    z-index: 3;
+    cursor: pointer;
+
+}
+
+.dettaglio:nth-child(4):hover {
+    z-index: 3;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+.nero {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 1;
+    scale: 0;
+  }
+  
+  .nero.attivo {
+    opacity: 0.8;
+    scale: 1;
+  }
+
+/* FOOTER */
+
+
+.footer {
+    margin-top: 100px;
+    background-color: rgb(255, 155, 85);
+}
+
+.footer-text {
+    display: flex;
+    text-align: justify;
+    justify-content: space-between;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    color: black;
+    font-size: 12px;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+/* JS SCROLL */
+.js-scroll {
+    animation-play-state: paused;
+}
+
+.js-scroll.scrolled {
+    animation-play-state: running;
+}
+.scrolled.spopo {
+    animation: dissolvenza 2s 0.4s backwards;
+}
+
+.scrolled.wowo {
+    animation: fade-up 1s 0.2s backwards;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 1400px) {
+    .header {
+        position: absolute;
+
+    }
+
+    .work-scroll {
+        animation-play-state: running;
+    }
+
+    
+}
+
+@media (max-width: 1200px) {
+    .project-info {
+
+        bottom: 0;
+        transform: translateY(0);
+        padding: 15px;
+    }
+
+    .third-heading {
+        font-size: 10px;
+    }
+
+    .description {
+        font-size: 8px;
+        margin-bottom: 6px;
+    }
+
+    .technologies {
+        font-size: 6px;
+    }
+}
+
+@media (max-width: 1000px) {
+
+    .spotify {
+        display: block;
+        padding-top: 100px;
+        padding-bottom: 0;
+    }
+
+    .spoty-text {
+        font-size: small;
+        display: flex;
+        align-items: center;
+        padding-bottom:50px;
+    }
+
+    .loading {
+        justify-content: right;
+        align-items: right;
+        padding-top: 0;
+    }
+
+    .loading span {
+        height: 20px;
+
+    }
+}
+
+@media (max-width: 600px) {
+
+
+    
+    .work {
+        margin-top: 50px;
+    }
+    
+    .grid {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 25px;
+    }
+
+
+    .project:nth-child(1) {
+        grid-row: 1 / 7;
+        grid-column: 1 / 4;
+        object-fit: initial;
+    }
+    
+    .project:nth-child(2) {
+        grid-column: 1 / 4;
+        grid-row: 7 / 10;
+        
+    }
+
+    .project:nth-child(3) {
+        grid-column: 1/4;
+        grid-row: 10/13;
+    }
+    
+    .project:nth-child(4) {
+        grid-column: 1/4;
+    }
+    
+    .project:nth-child(5) {
+        grid-column: 1/4;
+    }
+    
+    .project:nth-child(6) {
+        grid-column: 1/4;
+    }
+    
+    .project:nth-child(7) {
+        grid-column: 1/4;
+    }
+
+    .bio {
+        font-size: 14px;
+        padding-top: 50px;
+    }
+
+    .overlay {
+        margin-top: 50px;
+    }
+
+    .footer-text {
+        font-size: 8px;
+    }
+
+    .project-info {
+
+        bottom: 0;
+        transform: translateY(0);
+        padding: 24px;
+    }
+
+    .third-heading {
+        font-size: 16px;
+    }
+
+    .description {
+        font-size: 14px;
+        margin-bottom: 12px;
+    }
+
+    .technologies {
+        font-size:12px;
+    }
+
+
+}
+
+@media (max-width: 300px) {
+    .overlay {
+        margin-top: 30px;
+    }
+
+    .header {
+        padding:  0 50px;
+        margin-top: 30px;
+    }
+
+    .bio {
+        font-size: 10px;
+    }
+}
